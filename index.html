@@ -1,7 +1,263 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athens AirBnb Data | A Udacity Project</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Optional: Füge ein Favicon hinzu -->
+
+    <style>
+        /* Grundlegendes Styling für deinen Blogpost */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 800px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%; /* Stellt sicher, dass der Container die volle Breite des max-width erreicht */
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        header h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        header p {
+            color: #666;
+            font-style: italic;
+        }
+        article {
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #0056b3;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 5px;
+        }
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            /* Passe die Höhe an das Seitenverhältnis deiner Karte an.
+               Ein Verhältnis von 4:3 wäre padding-bottom: 75%;
+               Ein Verhältnis von 16:9 wäre padding-bottom: 56.25%;
+               Oder du setzt eine feste Höhe wie height: 500px; */
+            padding-bottom: 75%; /* Beispiel: 4:3 Verhältnis */
+            height: 0;
+            overflow: hidden;
+            background-color: #e0e0e0; /* Hintergrund für Ladezeit */
+            border-radius: 8px;
+            margin: 25px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none; /* Entfernt den Standard-iframe-Rahmen */
+            border-radius: 8px; /* Für abgerundete Ecken */
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+        /* Optional: Responsive Anpassungen */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+        }
+
+        /* Styling für die Bildcontainer */
+        .image-container2 {
+            display: flex;
+            justify-content: space-between; /* Optional: Abstand zwischen den Bildern */
+            align-items: center; /* Optional: vertikale Zentrierung */
+            margin: 20px 0; /* Optional: Abstand über und unter den Bildern */
+        }
+        .image-container2 img {
+            max-width: 46%; /* Stelle sicher, dass die Bilder nebeneinander passen */
+            height: auto; /* Beibehaltung des Höhenverhältnisses */
+            border-radius: 5px; /* Optional: abgerundete Ecken */
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <div class="container">
+        <header>
+            <h1>Airbnb Data Analysis in Athens: Understanding Geographical Distribution and Social Impact | A Udacity Project</h1>
+            <p>posted at <time datetime="2025-08-12">12. August 2025</time> from Tim Bender</p>
+        </header>
+
+        <article>
+            <img src="images/Athens_Hill.jpg" alt="Acropolis by night from the strefi hill">
+    
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Airbnb in Athens: A Data Analysis of the Tourism Boom</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        line-height: 1.6;
+                        margin: 20px;
+                        max-width: 800px;
+                        margin-left: auto;
+                        margin-right: auto;
+                        color: #333;
+                    }
+                    h1, h2, h3 {
+                        color: #2c3e50;
+                    }
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                        display: block;
+                        margin: 20px 0;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                    }
+                    ul {
+                        list-style-type: disc;
+                        margin-left: 20px;
+                    }
+                    a {
+                        color: #3498db;
+                        text-decoration: none;
+                    }
+                    a:hover {
+                        text-decoration: underline;
+                    }
+                    .section-separator {
+                        border-top: 1px solid #ccc;
+                        margin: 40px 0;
+                    }
+                    .poi-list li strong {
+                        color: #2980b9;
+                    }
+                </style>
+            </head>
+            <body>
+            
+          
+                <p><strong>Introduction</strong></p>
+                <p>Athens, the vibrant capital of Greece, is experiencing an unprecedented tourism boom. However, this success also brings profound social and urban challenges: rising rents displace the local population, while the heterogeneous social structure continuously redefines the attractiveness of city neighborhoods. In the following, I present the results of my data analysis, which focuses on the price distribution by accommodation type and, in particular, the factors influencing price developments in relation to geographical distribution.</p>
+            
+                <div class="section-separator"></div>
+            
+                <h2>Price Distribution of Airbnb Properties</h2>
+                <p>The diagram above shows the general price distribution in Athens. Fundamentally, Athens is an affordable city with a clear focus on the €50-99 per night price range.</p>
+                <img src="images/relative_distribution.png" alt="General Price Distribution of Airbnb in Athens">
+                <p>Looking at the price distribution by room type (Entire Home, Private Room, Hotel Room, and Shared Room), there is a clear shift in the lowest median price towards Shared Room properties. These are followed by Private Rooms, then Entire Homes, and finally Hotel Rooms. Shared Rooms account for the overwhelming majority of accommodations priced under €50 per night.</p>
+                <img src="images/price_distribution_room_type.png" alt="Price Distribution by Room Type">
+            
+                <div class="section-separator"></div>
+            
+                <h2>Short-term or Long-term Rentals?</h2>
+                <p>A key question is whether Airbnb hosts are more interested in long-term or short-term rentals, and if there are differences across various price ranges.</p>
+                <img src="images/relative_distribution_minimum_nights.png" alt="Relative Distribution of Minimum Nights">
+                <p>There is a clear focus on 1-3 night rentals for the lower price categories of &lt;€50 and €50-99. This may be due to Athens' position as the country's central hub, which necessitates short-term stays for locals for various errands.</p>
+                <img src="images/minimum_nights_room_type.png" alt="Minimum Nights by Room Type">
+                <p>Upon examining the individual accommodation types, it becomes clear that Shared Rooms are exclusively rented with a minimum of one night's stay, Hotel Rooms predominantly so. For Private Rooms and Entire Apartments, the distribution is more varied.</p>
+            
+                <div class="section-separator"></div>
+            
+                <h2>How Does Distance to Key Locations Affect Price Levels?</h2>
+                <p>The geographical analysis will focus on four Points of Interest (POIs), which I will briefly characterize:</p>
+                <ul class="poi-list">
+                    <li><strong>Monastiraki:</strong> Monastiraki forms the pulsating heart of historic Athens, located directly below the Acropolis. It is known for its lively flea market, historic buildings, countless shops, cafes, and restaurants. As a central transport hub with metro access, it is a gateway to many ancient sites. Monastiraki is Athens' tourist hotspot.</li>
+                    <li><strong>Exarchia:</strong> Located north of the city center, Exarchia has historically been an intellectual, student, and anarchist neighborhood. It is known for its alternative cultural scene, independent bookstores, political murals, and strong community spirit, but also for occasional social unrest and protests. A neighborhood with a strong identity of its own and increasing pressure from tourism and gentrification.</li>
+                    <li><strong>Syntagma Square:</strong> Syntagma Square is the political, administrative, and representative center of Athens. The Greek Parliament is located here, surrounded by large hotels, banks, and international brands. It is a place for national ceremonies and political demonstrations.</li>
+                    <li><strong>Omonia Square:</strong> Omonia is a historically important transportation hub and was once a glamorous center of the city. In recent decades, however, the square has experienced a significant decline, associated with social problems and a decrease in its attractiveness. Current investments and revitalization efforts aim to revive the square.</li>
+                </ul>
+            
+                <div class="image-container2">
+                    <img src="images\average_price_distance_Monastiraki.png" alt="">
+                    <img src="images\average_price_distance_Exarchia.png" alt="">
+                </div>
+            
+                <div class="image-container2">
+                    <img src="images\average_price_distance_Omonia.png" alt="">
+                    <img src="images\average_price_distance_Syntagma.png" alt="">
+                </div>
+
+
+
+                <p>The areas around Omonia and Exarchia have a lower average price than the areas around Monastiraki and Syntagma. The country's tourist and political center leads to higher price levels.</p>
+                <p>For better comparison, the individual plots are summarized in an overview plot:</p>
+                <img src="images/average_price_distance_all_pois.png" alt="Average Price by Distance to All POIs">
+                <p>The convergence of prices from a distance of approx. 3 km is due to the fact that the individual neighborhoods are very close to each other, leading to overlap effects very early on.</p>
+            
+                <div class="section-separator"></div>
+            
+                <h2>Local Distribution of High and Low-Class Accommodations</h2>
+                <p>The two maps below show the four POIs, with one map displaying the most expensive 15% and the other the cheapest 15% of accommodations. There is a clear distinct distribution around the inner city ring and the area between Monastiraki, Syntagma, and the Acropolis. The two maps are interactive and can be moved and zoomed – feel free to try it out!</p>
+                <p>Visualization of the most expensive and cheapest 15%:</p>
+                <h4>15% High Price Venues:</h4> 
+                <div class="iframe-container">
+                    <iframe src="maps/athens_high_price_map.html" title="distribution of high price venues"></iframe>
+                </div>
+            
+                <h4>15% Low Price Venues:</h4> 
+                <div class="iframe-container">
+                    <iframe src="maps/athens_low_price_map.html" title="distribution of high price venues"></iframe>
+                </div>
+            
+                <div class="section-separator"></div>
+            
+                <h2>Conclusion</h2>
+                <p>The analysis of Airbnb data in Athens reveals a multifaceted picture of the local tourism market.</p>
+                <p>Athens presents itself as a comparatively affordable travel destination, with a price focus in the mid-range segment, where Shared Rooms particularly appeal to budget-conscious travelers. The data shows a clear focus on short-term rentals (1-3 nights), indicating high dynamism and guest turnover.</p>
+                <p>Geographically, prices are strongly linked to location: tourist and political centers like Monastiraki and Syntagma have higher prices, while Omonia and Exarchia offer more affordable options. The price distribution maps illustrate the gentrification of core areas, where high-priced accommodations are concentrated, while more affordable options are found on the city's outskirts or in less touristy neighborhoods.</p>
+            
+                <h3>In summary:</h3>
+                <p>The Airbnb data reflects the tourism boom in Athens, which, while offering a wide range of accommodations, also poses social challenges. The conversion of residential space for tourist use, especially in the city center, could, in the long term, impair diversity and affordability for the local population. Finding a sustainable balance between tourism promotion and urban quality of life remains a key task for Athens' urban development.</p>
+            
+
+
+    <footer>
+        <p>&copy; 2025 Tim Bender | all rights reserved | <a href="https://github.com/kwerweltein" target="_blank">my GitHub profile</a></p>
+    </footer>
+    </div>
 </body>
 </html>
